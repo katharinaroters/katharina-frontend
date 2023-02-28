@@ -1,0 +1,43 @@
+/* @font-face {
+    font-family: "Avenir Next";
+    src: url("/fonts/AvenirNextLTPro-Regular.otf");
+    font-weight: normal;
+}
+@font-face {
+    font-family: "Avenir Next";
+    src: url("/fonts/Metropolis-Medium.otf");
+    font-weight: bold;
+}
+@font-face {
+    font-family: "Avenir Next";
+    src: url("/fonts/AvenirNextLTPro-Bold.otf");
+    font-weight: 900;
+}
+
+@font-face {
+    font-family: "Avenir Next";
+    src: url("/fonts/AvenirNextLTPro-Lt.otf");
+    font-weight: 300;
+} */
+
+@font-face {
+    font-family: "Micross";
+    src: url("/fonts/micross.ttf");
+    font-weight: normal;
+}
+@font-face {
+    font-family: "Micross";
+    src: url("/fonts/micross.ttf");
+    font-weight: bold;
+}
+@font-face {
+    font-family: "Micross";
+    src: url("/fonts/micross.ttf");
+    font-weight: 900;
+}
+
+@font-face {
+    font-family: "Micross";
+    src: url("/fonts/micross.ttf");
+    font-weight: 300;
+} 

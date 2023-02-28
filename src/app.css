@@ -1,0 +1,176 @@
+@import '../static/fonts/fonts.css';
+
+:root {
+	font-family: 'Micross';
+	--pure-white: #ffffff;
+	--primary-color: #b9c6d2;
+	--secondary-color: #d0dde9;
+	--tertiary-color: #edf0f8;
+	--accent-color: #000000;
+	--padding-amount: 3rem;
+	--menu-height: 2rem;
+	--heading-color: rgba(0, 0, 0, 0.7);
+	--text-color: #323232;
+	--navigation-fs: 0.95rem;
+	--background-without-opacity: rgba(255, 255, 255, 0.7);
+	--column-width: 42rem;
+	--column-margin-top: 4rem;
+	--header-fs: 3rem;
+	--menu-fs: 2rem;
+	--text-fs: 0.8rem;
+	--navigation-padding: 2px;
+	--frame-height: calc(100vh - 5vw);
+	--frame-width: calc(100vw - 5vw);
+	--img-size: 230px;
+	--max-width: calc(var(--img-size) * 4 + 30px)
+}
+
+@media (min-width:1510px) {
+	:root {
+		--img-size: 250px;
+	}
+}
+@media (min-width:1700px) {
+	:root {
+		--img-size: 280px;
+	}
+}
+@media (min-width:1900px) {
+	:root {
+		--img-size: 310px;
+	}
+}
+@media (min-width:2100px) {
+	:root {
+		--img-size: 350px;
+	}
+}
+@media (min-width:2400px) {
+	:root {
+		--img-size: 420px;
+	}
+}
+
+ul {
+	padding-left: 0;
+}
+
+body,
+html {
+	overflow: hidden;
+}
+
+.wrapper {
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	min-height: 100vh;
+	margin: 0;
+	letter-spacing: 2px;
+}
+
+.negative-margin {
+	/* top: -1.3rem;
+	position: relative; */
+}
+
+body::before {
+	content: '';
+	width: 80vw;
+	height: 100vh;
+	position: absolute;
+	top: 0;
+	left: 10vw;
+	z-index: -1;
+	opacity: 0.05;
+}
+
+#svelte {
+	/* min-height: 100vh; */
+	/* display: flex; */
+	/* flex-direction: column; */
+}
+
+h1,
+h2,
+p {
+	font-weight: 400;
+	color: var(--heading-color);
+}
+
+
+
+p, h5, h6, h3, h4 {
+	line-height: 1.5;
+	margin: 0;
+	font-weight: 400;
+	color: var(--heading-color);
+}
+
+a {
+	color: var(--accent-color);
+	word-wrap: break-word;
+	text-decoration: underline;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+h1 {
+	font-size: 2rem;
+	margin-bottom: 0 0 1em 0;
+	text-align: center;
+}
+
+h2 {
+	font-size: 1rem;
+}
+
+input,
+button {
+	font-size: inherit;
+	font-family: inherit;
+}
+
+button:focus:not(:focus-visible) {
+	outline: none;
+}
+
+@media (min-width: 720px) {
+	h1 {
+		font-size: 2.4rem;
+	}
+}
+
+.noselect {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+nav li>a>span:first-child {
+	color: #323232;
+	transition-property: color, font-size;
+	transition-duration: 0.2s;
+	transition-timing-function: ease-out;
+}
+
+nav li:hover>a>span:first-child {
+	color: #000;
+}
+
+img {
+	object-fit: contain;
+	object-position: center;
+}
+
+strong {
+	color: black;
+	font-size: 1.1em;
+}
