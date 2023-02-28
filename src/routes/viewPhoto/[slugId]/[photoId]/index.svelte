@@ -1,6 +1,6 @@
 <script context="module">
-	import { browser } from '$app/environment';
-	import { currentSlugContent } from 'svelte/store';
+	import { browser } from '$app/env';
+	import { currentSlugContent } from '$store';
 	export async function load({ page, fetch }) {
 		const { slugId, photoId } = page.params;
 		if (browser) {
