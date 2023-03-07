@@ -6,7 +6,7 @@
 {#if featured.featured}
 	<div>
 		<a href={featured.url}>
-			<img src={featured.featured.url} alt="Featured" />
+			<img src={featured.featuredPhoto.url} alt="Featured" />
 		</a>
 	</div>
 {/if}
