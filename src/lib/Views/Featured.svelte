@@ -9,15 +9,15 @@
 	{#each sortedContent as sContent}
 		<div>
 			<div class="image-wr">
-				<a href="/viewPhoto/{sContent.slug}/{sContent.images[0].id}"
+				<a href="/viewPhoto/{sContent.attributes.slug?.data.attributes.slug}/{sContent.attributes.images.data[0].id}"
 					><img
-						src={sContent.featuredPhoto[0].formats.large.url}
-						alt={sContent.featuredPhoto[0].alternativeText}
+						src={sContent.attributes.featuredPhoto.data[0].formats.large.url}
+						alt={sContent.attributes.featuredPhoto.data[0].alternativeText}
 					/></a
 				>
 			</div>
 			<div>
-				{@html converter.makeHtml(sContent.text)}
+				{@html converter.makeHtml(sContent.attributes.text)}
 			</div>
 		</div>
 	{/each}

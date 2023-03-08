@@ -5,7 +5,8 @@
 	import { menuItems, leftText, currentSlugContent } from '$store';
 
 	export let content = {};
-	if (content !== null && content?.slug) currentSlugContent.set(content);
+	console.log(content)
+	if (content !== null && content.attributes.slug.data){ currentSlugContent.set(content);console.log("PIZDEC>>>>>>>>>>>>")};
 	const slugId = searchSlugIdByPath($page.path, $menuItems);
 	const isAlmostSquare = (photo) =>
 		photo.height == photo.width ||
@@ -13,24 +14,23 @@
 	const isVer = (photo) => photo.height > photo.width && !isAlmostSquare(photo);
 	const isHor = (photo) => photo.height < photo.width && !isAlmostSquare(photo);
 	$: {
-		leftText.set(content.sideText);
+		leftText.set(content.attributes.sideText);
 	}
 
 	onDestroy((_) => {
 		leftText.set(null);
 	});
 </script>
-
-{#if content.images?.length}
+{#if content.attributes.images.data.length}
 	<section>
-		{#each content.images as photo}
+		{#each content.attributes.images.data as photo}
 			<div>
 				<a href="/viewPhoto/{slugId}/{photo.id}"
 					><img
-						class:sqr={isAlmostSquare(photo)}
-						class:ver={isVer(photo)}
-						class:hor={isHor(photo)}
-						src={photo.formats?.small?.url}
+						class:sqr={isAlmostSquare(photo.attributes)}
+						class:ver={isVer(photo.attributes)}
+						class:hor={isHor(photo.attributes)}
+						src={photo.attributes.formats?.small?.url}
 						alt=""
 					/></a
 				>

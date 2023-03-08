@@ -12,7 +12,7 @@ const searchSlugIdByPath = (
 	const nextPathLevel: number = pathArrLastIndex > pathLevel ? pathLevel + 1 : pathArrLastIndex;
 
 	for (const navItem of navArr) {
-		const slug = navItem.attributes.slug.slug.split('/')[pathLevel];
+		const slug = navItem.attributes.slug.data.attributes.slug.split('/')[pathLevel];
 
 		if (
 			slug === pathArr[pathLevel] &&
@@ -21,7 +21,7 @@ const searchSlugIdByPath = (
 		) {
 			return searchSlugIdByPath(path, navItem.attributes.nestedNavigations.data, nextPathLevel);
 		} else if (slug === pathArr[pathLevel] && pathLevel === pathArrLastIndex) {
-			return navItem.attributes.slug.id;
+			return navItem.attributes.slug.data.id;
 		}
 	}
 

@@ -37,7 +37,6 @@ const mainPageRes = async () => {
 	const res = await fetcher(`/main-page?populate=deep`, {
 		method: 'GET',
 	});
-	console.log(res.data.data)
 	return {
 		status: res.status,
 		body: await res.data.data
@@ -57,6 +56,6 @@ export async function api(request: Request<Locals>, slug: string) {
 
 	return {
 		status: res.status,
-		body: await res.data
+		body: await res.data.data
 	};
 }

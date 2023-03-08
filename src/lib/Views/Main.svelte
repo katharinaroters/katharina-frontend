@@ -38,6 +38,10 @@
 		column-gap: 20px;
 		grid-template-columns: 1fr 1fr 1fr 1fr;
 		place-items: center;
+		img{
+		object-position: top;
+
+		}
 	}
 	div {
 		width: 100%;

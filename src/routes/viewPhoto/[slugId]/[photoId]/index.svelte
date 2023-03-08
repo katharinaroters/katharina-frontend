@@ -7,7 +7,7 @@
 			let slugLoaded = false;
 			let currentContent = null;
 			currentSlugContent.subscribe((item) => {
-				if (item?.slug && item?.slug?.id == slugId) {
+				if (item?.attributes.slug && item?.attributes.slug?.data.id == slugId) {
 					slugLoaded = true;
 				} else slugLoaded = false;
 
@@ -45,17 +45,17 @@
 	import Spinner from '$lib/Spinner.svelte';
 	import BigCarousel from '$lib/Views/BigCarousel.svelte';
 	import LargePhoto from '$lib/Views/LargePhoto.svelte';
-	import { navToLeftOpened, noScroll } from '$store';
+	import { navToLeftOpened, noScroll } from '../../../../store';
 	import { onDestroy, onMount } from 'svelte';
 
 	export let content = [],
 		photoId,
 		slugId;
 
-	if (!$currentSlugContent?.slug || $currentSlugContent?.slug?.id !== slugId)
+	if (!$currentSlugContent?.attributes?.slug?.data || $currentSlugContent?.attributes.slug?.data.id !== slugId)
 		currentSlugContent.set(content[0]);
 
-	let images = $currentSlugContent?.images;
+	let images = $currentSlugContent?.attributes.images;
 	let currentImage = null;
 	$: prevImage = null;
 	$: currentIndex = null;
@@ -81,7 +81,7 @@
 			}
 		}
 	};
-	$: isBook = $currentSlugContent.contentType == 'book';
+	$: isBook = $currentSlugContent.attributes.contentType == 'book';
 	navToLeftOpened.set('photography');
 	onMount((_) => {
 		noScroll.set(true);
@@ -94,7 +94,7 @@
 
 {#if isBook}
 	<div class="wrapper">
-		<div class="photo" class:hasText={$currentSlugContent.contentType == 'book'}>
+		<div class="photo" class:hasText={$currentSlugContent.attributes.contentType == 'book'}>
 			<BigCarousel
 				{images}
 				{slugId}
@@ -107,7 +107,7 @@
 	</div>
 {:else if images && $navigating === null}
 	<div class="wrapper">
-		<div class="photo" class:hasText={$currentSlugContent.contentType == 'book'}>
+		<div class="photo" class:hasText={$currentSlugContent.attributes.contentType == 'book'}>
 			<LargePhoto
 				bind:altArrows={isBook}
 				bind:currentImage
@@ -116,7 +116,7 @@
 				{slugId}
 			/>
 		</div>
-		<!-- {#if prevImage === null && $currentSlugContent.contentType == 'book'}
+		<!-- {#if prevImage === null && $currentSlugContent.attributes.contentType == 'book'}
 							<div>
 								{@html converter.makeHtml($currentSlugContent.text)}
 							</div>

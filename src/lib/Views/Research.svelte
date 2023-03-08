@@ -20,10 +20,10 @@
 	};
 </script>
 
-{#if content.text}
+{#if content.attributes.text}
 	<section class="text">
 		<div>
-			{@html converter.makeHtml(content.text)}
+			{@html converter.makeHtml(content.attributes.text)}
 		</div>
 		<div class="carousel-wr">
 			<svelte:component
@@ -45,16 +45,16 @@
 						<Arrow left={false} color="#323232" />
 					</div>
 				</div>
-				{#each content.images as photo}
+				{#each content.attributes.images.data as photo}
 					<div class="photo">
-						<img src={photo.formats?.large?.url} alt="" />
+						<img src={photo.attributes.formats?.large?.url} alt="" />
 					</div>
 				{/each}
 			</svelte:component>
 		</div>
 		<br />
 		<div>
-			{@html converter.makeHtml(content.sideText)}
+			{@html converter.makeHtml(content.attributes.sideText)}
 		</div>
 	</section>
 {/if}

@@ -33,32 +33,29 @@
 	import CategoryPreview from '$lib/Views/CategoryPreview.svelte';
 	import Pdf from '$lib/Views/Pdf.svelte';
 </script>
-{#if !content.length && !content.id}
-<div class="under-cosntruct">
-	Under construction
 
-</div>
-{/if}
-{#if $navigating === null}
+{#if !content.length && !content.id}
+	<div class="under-cosntruct">Under construction</div>
+{:else if $navigating === null}
 	{#if $page.path === '/'}
 		<Main bind:content={content.attributes} />
 	{:else}
-		{#if content[0]?.contentType === 'photos'}
+		{#if content[0]?.attributes.contentType === 'photos'}
 			<PhotoGrid content={content[0]} />
 		{/if}
-		{#if content[0]?.contentType === 'featuring'}
+		{#if content[0]?.attributes.contentType === 'featuring'}
 			<Featured content={content[0]} />
 		{/if}
-		{#if content[0]?.contentType === 'research'}
+		{#if content[0]?.attributes.contentType === 'research'}
 			<Research content={content[0]} />
 		{/if}
-		{#if content[0]?.contentType === 'book'}
+		{#if content[0]?.attributes.contentType === 'book'}
 			<Book content={content[0]} />
 		{/if}
 		<!-- {#if content[0]?.contentType === 'pdf'}
 			<Pdf content={content[0]} />
 		{/if} -->
-		{#if content[0]?.contentType === 'categoryList'}
+		{#if content[0]?.attributes.contentType === 'categoryList'}
 			<CategoryPreview url={$page.path} content={content[0]} />
 		{/if}
 	{/if}
@@ -67,7 +64,7 @@
 {/if}
 
 <style>
-	.under-cosntruct{
+	.under-cosntruct {
 		color: var(--heading-color);
 	}
 </style>

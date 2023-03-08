@@ -7,7 +7,7 @@
 			let slugLoaded = false;
 			let currentContent = null;
 			currentSlugContent.subscribe((item) => {
-				if (item?.slug && item?.slug?.id == slugId) {
+				if (item?.attributes.slug && item?.attributes.slug?.data.id == slugId) {
 					slugLoaded = true;
 				} else slugLoaded = false;
 

@@ -9,16 +9,20 @@ export default interface NavItem {
 		updated_by: number;
 		created_at: string;
 		updated_at: string;
-		nestedNavigations:{data: Array<NavItem>};
+		nestedNavigations: { data: Array<NavItem> };
 		slug: {
-			id: number;
-			slug: string;
-			navigation: number;
-			published_at: string;
-			created_by: number;
-			updated_by: number;
-			created_at: string;
-			updated_at: string;
+			data: {
+				id: number;
+				attributes: {
+					slug: string;
+					navigation: number;
+					published_at: string;
+					created_by: number;
+					updated_by: number;
+					created_at: string;
+					updated_at: string;
+				}
+			}
 		};
 	}
 }

@@ -3,7 +3,7 @@
 </script>
 
 <section>
-	<div class="book"><img src={content.featuredPhoto.formats.big} alt="" /></div>
+	<div class="book"><img src={content.attributes.featuredPhoto.data[0].attributes.formats.big} alt="" /></div>
 </section>
 
 <style lang="scss">

@@ -17,7 +17,7 @@
 		url = '';
 </script>
 
-{#if content.featuredPhoto?.length}
+{#if content.attributes.featuredPhoto.data.length}
 	<section class="preview-slider">
 		<!-- {#each content.featuredPhoto as photo}
 			<div><a href="/{photo.caption}"><img src={photo.formats?.small?.url} alt="" /></a></div>
@@ -38,7 +38,7 @@
 			<div slot="next">
 				<Arrow />
 			</div>
-			{#each content.featuredPhoto as photo}
+			{#each content.attributes.featuredPhoto.data as photo}
 				<div><a href="/{photo.caption}"><img src={photo.formats?.large?.url} alt="" /></a></div>
 			{/each}
 		</svelte:component>

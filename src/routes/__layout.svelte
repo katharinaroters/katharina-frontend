@@ -1,5 +1,5 @@
 <script context="module">
-	import { noScroll } from '$store';
+	import { noScroll } from '../store';
 	import fetcher from '../utils/fetcher'
 	import apiUrl from '../utils/apiUrl.js';
 	export const prerender = false;

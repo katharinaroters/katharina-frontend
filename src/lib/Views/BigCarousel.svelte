@@ -22,7 +22,6 @@
 		}
 	};
 	const handleArrAlloc = (leftArr, rightArr, offsetWidth) => {
-		console.log(offsetWidth);
 		if (offsetWidth) {
 			if (leftArr) leftArr.style = `width:${offsetWidth / 2}px`;
 			if (rightArr) rightArr.style = `width:${offsetWidth / 2}px;left:${offsetWidth / 2}px`;
