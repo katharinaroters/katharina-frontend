@@ -2,6 +2,7 @@ import type { Request } from '@sveltejs/kit';
 import type { Locals } from '$lib/types';
 import apiUrl from '../../utils/apiUrl';
 import qs from 'qs';
+import fetcher from 'src/utils/fetcher';
 
 /*
 	This module is used by the /todos.json and /todos/[uid].json
@@ -23,14 +24,11 @@ const query = (slugId: number): string => {
 };
 
 export async function api(request: Request<Locals>, slugId: number) {
-	const res = await fetch(`${base}/contents?${query(slugId)}`, {
+	const res = await fetcher(`/contents?${query(slugId)}`, {
 		method: request.method,
-		headers: {
-			'content-type': 'application/json'
-		}
 	});
 	return {
 		status: res.status,
-		body: await res.json()
+		body: await res.data
 	};
 }

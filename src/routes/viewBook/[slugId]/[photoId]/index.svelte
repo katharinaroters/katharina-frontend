@@ -22,7 +22,7 @@
 					}
 				};
 		}
-		const res = await fetch(`/viewPhoto/${slugId}.json`);
+		const res = await fetchw(`/viewPhoto/${slugId}.json`);
 		if (res.ok) {
 			const content = await res.json();
 			return {
