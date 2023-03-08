@@ -41,7 +41,7 @@
 {/if}
 {#if $navigating === null}
 	{#if $page.path === '/'}
-		<Main bind:featured={content} />
+		<Main bind:content={content.attributes} />
 	{:else}
 		{#if content[0]?.contentType === 'photos'}
 			<PhotoGrid content={content[0]} />

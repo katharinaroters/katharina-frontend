@@ -1,17 +1,44 @@
 <script lang="ts">
+	import showdown from 'showdown';
+	const converter = new showdown.Converter();
 	export const prerender = true;
-	export let featured;
+	export let content;
 </script>
 
-{#if featured.featured}
-	<div>
-		<a href={featured.url}>
-			<img src={featured.featuredPhoto.url} alt="Featured" />
+{#if content.featured}
+	<!-- <div>
+		<a href={content.url}>
+			<img src={content.featuredPhoto.url} alt="Featured" />
 		</a>
+	</div> -->
+{/if}
+{#if content.text}
+<div>
+	<div class="image-row">
+		{#each content.images.data as image}
+		<div>
+			<img src={image.attributes.formats.small.url} alt="Featured" />
+		</div>
+		
+		{/each}
 	</div>
+
+<div class="text">
+	{@html converter.makeHtml(content.text)}
+</div>	
+
+</div>
 {/if}
 
 <style lang="scss">
+	.image-row{
+		width: 100%;
+		max-height: 340px ;
+		display: grid;
+		column-gap: 20px;
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+		place-items: center;
+	}
 	div {
 		width: 100%;
 		height: 100%;

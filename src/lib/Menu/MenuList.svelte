@@ -23,27 +23,27 @@
 		currentPath.includes(`/${slug}`) ||
 		(navigating !== null && navigating.to.path.includes(`/${slug}`));
 
-	const isSelectedItem = (navItem, currentPath) => '/' + navItem.slug?.slug === currentPath;
+	const isSelectedItem = (navItem, currentPath) => '/' + navItem.attributes.slug?.data.attributes.slug === currentPath;
 </script>
 
 {#if navItems && navItems.length}
 	<ul class="noselect">
 		{#each navItems as navItem, index}
 			<li
-				class:hasActive={hasActiveItem(navItem.slug?.slug, $page.path, $navigating) ||  $navToLeftOpened === navItem.slug?.slug}
+				class:hasActive={hasActiveItem(navItem.attributes.slug?.data.attributes.slug, $page.path, $navigating) ||  $navToLeftOpened === navItem.attributes.slug?.data.attributes.slug}
 				class:selected={isSelectedItem(navItem, $page.path)}
-				class:faded={isFaded(navItem.slug?.slug, $page.path) &&
-					$navToLeftOpened !== navItem.slug?.slug}
+				class:faded={isFaded(navItem.attributes.slug?.data.attributes.slug, $page.path) &&
+					$navToLeftOpened !== navItem.attributes.slug?.data.attributes.slug}
 			>
 				<a
 					href={isSelectedItem(navItem, $page.path)
 						? getPrevLevel()
-						: `/${navItem.slug.slug}`}
+						: `/${navItem.attributes.slug?.data.attributes.slug}`}
 				>
-					<span>{navItem.title}</span>
+					<span>{navItem.attributes.title}</span>
 				</a>
-				{#if hasActiveItem(navItem.slug?.slug, $page.path, $navigating) || $navToLeftOpened === navItem.slug?.slug}
-					<svelte:self iteration={iteration + 1} navItems={navItem.nestedNavigations} />
+				{#if hasActiveItem(navItem.attributes.slug?.data.attributes.slug, $page.path, $navigating) || $navToLeftOpened === navItem.attributes.slug?.data.attributes.slug}
+					<svelte:self iteration={iteration + 1} navItems={navItem.attributes.nestedNavigations.data} />
 				{/if}
 			</li>
 		{/each}

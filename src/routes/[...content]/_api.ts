@@ -3,7 +3,7 @@ import type { Locals } from '$lib/types';
 import apiUrl from '../../utils/apiUrl';
 import qs from 'qs';
 import replaceall from 'replaceall';
-import fetcher from 'src/utils/fetcher';
+import fetcher from '../../utils/fetcher';
 
 /*
 	This module is used by the /todos.json and /todos/[uid].json
@@ -27,19 +27,20 @@ const query = (path: string): string => {
 			}
 		  },
 		},
-		populate: 'slug',
+		populate: '*',
 	  }, {
 		encodeValuesOnly: true, // prettify URL
 	  });
 };
 
 const mainPageRes = async () => {
-	const res = await fetcher(`/main-page`, {
+	const res = await fetcher(`/main-page?populate=deep`, {
 		method: 'GET',
 	});
+	console.log(res.data.data)
 	return {
 		status: res.status,
-		body: await res.data
+		body: await res.data.data
 	};
 };
 

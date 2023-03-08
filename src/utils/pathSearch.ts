@@ -3,7 +3,7 @@ import type NavItem from '../types/NavItem';
 const searchSlugIdByPath = (
 	path: string,
 	navArr: Array<NavItem>,
-	pathLevel: number = 0
+	pathLevel = 0
 ): number => {
 	const pathArr: Array<string> = path.split('/')[0].length
 		? path.split('/')
@@ -11,17 +11,17 @@ const searchSlugIdByPath = (
 	const pathArrLastIndex: number = pathArr.length - 1;
 	const nextPathLevel: number = pathArrLastIndex > pathLevel ? pathLevel + 1 : pathArrLastIndex;
 
-	for (let navItem of navArr) {
-		const slug = navItem.slug.slug.split('/')[pathLevel];
+	for (const navItem of navArr) {
+		const slug = navItem.attributes.slug.slug.split('/')[pathLevel];
 
 		if (
 			slug === pathArr[pathLevel] &&
 			pathLevel !== pathArrLastIndex &&
-			navItem.nestedNavigations.length
+			navItem.attributes.nestedNavigations.data.length
 		) {
-			return searchSlugIdByPath(path, navItem.nestedNavigations, nextPathLevel);
+			return searchSlugIdByPath(path, navItem.attributes.nestedNavigations.data, nextPathLevel);
 		} else if (slug === pathArr[pathLevel] && pathLevel === pathArrLastIndex) {
-			return navItem.slug.id;
+			return navItem.attributes.slug.id;
 		}
 	}
 

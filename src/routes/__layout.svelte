@@ -1,14 +1,14 @@
 <script context="module">
 	import { noScroll } from '$store';
+	import fetcher from '../utils/fetcher'
 	import apiUrl from '../utils/apiUrl.js';
-	export const prerender = true;
+	export const prerender = false;
 	export async function load({ page, fetch, session, context }) {
-		const res = await fetcher('/navigations');
-
+		const res = await fetcher('/navigations?populate=deep,3&filters[isParent][$eq]=true');
 		if (res.status >= 200 && res.status < 300) {
 			return {
 				props: {
-					navItems: await res.data
+					navItems: await res.data.data
 				}
 			};
 		}
@@ -24,34 +24,35 @@
 	import Header from '$lib/Header/index.svelte';
 	import Menu from '$lib/Menu/index.svelte';
 	import '../app.css';
-	import fetcher from 'src/utils/fetcher.js';
 	// import Lock from '$lib/Views/Lock.svelte';
-	export let navItems = [
-		{
-			title: 'PHOTOGRAPHY',
-			slug: { slug: 'photography' },
-			nestedNavigations: [
-				{ title: 'ARMENIAN ANATOMY', slug: { slug: 'photography/armenian_anatomy' } },
-				{ title: 'YEREVAN CONCRETE', slug: { slug: 'photography/yerevan_concrete' } },
-				{ title: 'UTOPIA & COLLAPSE', slug: { slug: 'photography/utopia_collapse' } },
-				{ title: 'HUNGARIAN CUBES', slug: { slug: 'photography/hungarian_cubes' } },
-				{ title: 'BOOKS', slug: { slug: 'photography/books' } },
-				{ title: 'RESEARCH', slug: { slug: 'photography/research' } }
-			]
-		},
-		{
-			title: 'WUNDERBLOCK',
-			slug: { slug: 'wunderblock' }
-		},
-		{
-			title: 'PAINTINGS',
-			slug: { slug: 'paintings' }
-		},
-		{
-			title: 'DRAWINGS',
-			slug: { slug: 'drawings' }
-		}
-	];
+	export let navItems ;
+
+	// export let navItems = [
+	// 	{
+	// 		title: 'PHOTOGRAPHY',
+	// 		slug: { slug: 'photography' },
+	// 		nestedNavigations: [
+	// 			{ title: 'ARMENIAN ANATOMY', slug: { slug: 'photography/armenian_anatomy' } },
+	// 			{ title: 'YEREVAN CONCRETE', slug: { slug: 'photography/yerevan_concrete' } },
+	// 			{ title: 'UTOPIA & COLLAPSE', slug: { slug: 'photography/utopia_collapse' } },
+	// 			{ title: 'HUNGARIAN CUBES', slug: { slug: 'photography/hungarian_cubes' } },
+	// 			{ title: 'BOOKS', slug: { slug: 'photography/books' } },
+	// 			{ title: 'RESEARCH', slug: { slug: 'photography/research' } }
+	// 		]
+	// 	},
+	// 	{
+	// 		title: 'WUNDERBLOCK',
+	// 		slug: { slug: 'wunderblock' }
+	// 	},
+	// 	{
+	// 		title: 'PAINTINGS',
+	// 		slug: { slug: 'paintings' }
+	// 	},
+	// 	{
+	// 		title: 'DRAWINGS',
+	// 		slug: { slug: 'drawings' }
+	// 	}
+	// ];
 	menuItems.set(navItems);
 </script>
 

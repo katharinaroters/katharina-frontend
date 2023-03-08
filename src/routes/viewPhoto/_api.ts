@@ -19,7 +19,13 @@ const base = apiUrl;
 
 const query = (slugId: number): string => {
 	return qs.stringify({
-		_where: { 'slug.id': slugId }
+		filters:{
+			slug:{
+				id:{
+					$eq:slugId
+				}
+			}
+		}
 	});
 };
 
