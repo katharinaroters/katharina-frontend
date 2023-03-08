@@ -6,7 +6,7 @@
 
 	export let content = {};
 	console.log(content)
-	if (content !== null && content.attributes.slug.data){ currentSlugContent.set(content);console.log("PIZDEC>>>>>>>>>>>>")};
+	if (content !== null && content.attributes.slug.data) currentSlugContent.set(content)
 	const slugId = searchSlugIdByPath($page.path, $menuItems);
 	const isAlmostSquare = (photo) =>
 		photo.height == photo.width ||

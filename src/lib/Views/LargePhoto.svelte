@@ -9,7 +9,7 @@
 		nextImage = null,
 		slugId,
 		altArrows = false;
-	$: currentImg = altArrows ? currentImage : currentImage.formats.large
+	$: currentImg = altArrows ? currentImage : currentImage.attributes.formats.large
 </script>
 
 <div class="wrapper">

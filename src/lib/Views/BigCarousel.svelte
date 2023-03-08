@@ -81,12 +81,12 @@
 			{#each images as photo, index}
 				{#if index === 2}
 					<div class="photo">
-						<img src={photo?.url} bind:this={sampleImage} alt="" />
+						<img src={photo?.attributes.url} bind:this={sampleImage} alt="" />
 						<!-- <div class="img" style="background-image: url({photo?.formats?.large?.url});"></div> -->
 					</div>
 				{:else}
 					<div class="photo">
-						<img src={photo?.url} alt="" />
+						<img src={photo?.attributes.url} alt="" />
 						<!-- <div class="img" style="background-image: url({photo?.formats?.large?.url});"></div> -->
 					</div>
 				{/if}

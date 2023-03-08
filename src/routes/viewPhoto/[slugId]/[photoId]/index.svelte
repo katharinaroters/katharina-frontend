@@ -55,7 +55,7 @@
 	if (!$currentSlugContent?.attributes?.slug?.data || $currentSlugContent?.attributes.slug?.data.id !== slugId)
 		currentSlugContent.set(content[0]);
 
-	let images = $currentSlugContent?.attributes.images;
+	let images = $currentSlugContent?.attributes.images.data;
 	let currentImage = null;
 	$: prevImage = null;
 	$: currentIndex = null;
