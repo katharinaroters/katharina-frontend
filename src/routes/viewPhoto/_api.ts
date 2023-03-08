@@ -2,7 +2,7 @@ import type { Request } from '@sveltejs/kit';
 import type { Locals } from '$lib/types';
 import apiUrl from '../../utils/apiUrl';
 import qs from 'qs';
-import fetcher from 'src/utils/fetcher';
+import fetcher from '../../utils/fetcher';
 
 /*
 	This module is used by the /todos.json and /todos/[uid].json
