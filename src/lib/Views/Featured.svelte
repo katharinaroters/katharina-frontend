@@ -2,11 +2,10 @@
 	import showdown from 'showdown';
 	const converter = new showdown.Converter();
 	export let content;
-	const sortedContent = [content?.contents[1], content?.contents[0], content?.contents[2]];
 </script>
 
 <section>
-	{#each sortedContent as sContent}
+	{#each content as sContent}
 		<div>
 			<div class="image-wr">
 				<a href="/viewPhoto/{sContent.attributes.slug?.data.attributes.slug}/{sContent.attributes.images.data[0].id}"
