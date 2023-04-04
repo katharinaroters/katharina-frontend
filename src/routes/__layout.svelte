@@ -1,7 +1,6 @@
 <script context="module">
 	import { noScroll } from '../store';
 	import fetcher from '../utils/fetcher'
-	import apiUrl from '../utils/apiUrl.js';
 	export const prerender = false;
 	export async function load({ page, fetch, session, context }) {
 		const res = await fetcher('/navigations?populate=deep,3&filters[isParent][$eq]=true');
@@ -20,7 +19,7 @@
 </script>
 
 <script lang="ts">
-	import { menuItems } from '$store';
+	import { menuItems } from '../store';
 	import Header from '$lib/Header/index.svelte';
 	import Menu from '$lib/Menu/index.svelte';
 	import '../app.css';

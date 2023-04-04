@@ -2,16 +2,17 @@
 	import showdown from 'showdown';
 	const converter = new showdown.Converter();
 	export let content;
+	const contents = content.attributes.contents.data 
 </script>
 
 <section>
-	{#each content as sContent}
+	{#each contents as sContent}
 		<div>
 			<div class="image-wr">
-				<a href="/viewPhoto/{sContent.attributes.slug?.data.attributes.slug}/{sContent.attributes.images.data[0].id}"
+				<a href="/viewPhoto/{sContent.attributes.slug?.data.attributes.slug}/{sContent.attributes.featuredPhoto.data[0].id}"
 					><img
-						src={sContent.attributes.featuredPhoto.data[0].formats.large.url}
-						alt={sContent.attributes.featuredPhoto.data[0].alternativeText}
+						src={sContent.attributes.featuredPhoto.data[0].attributes.formats.large.url}
+						alt={sContent.attributes.featuredPhoto.data[0].attributes.alternativeText}
 					/></a
 				>
 			</div>

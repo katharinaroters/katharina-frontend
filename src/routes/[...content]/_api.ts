@@ -27,7 +27,7 @@ const query = (path: string): string => {
 			}
 		  },
 		},
-		populate: '*',
+		populate: 'deep',
 	  }, {
 		encodeValuesOnly: true, // prettify URL
 	  });
